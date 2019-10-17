@@ -1,23 +1,42 @@
-import React, {Component} from 'react';
-import {ScrollView, Dimensions} from 'react-native';
-import HTML from 'react-native-render-html';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 
-const htmlContent = `
-    <h1>This HTML snippet is now rendered with native components !</h1>
-    <h2>Enjoy a webview-free and blazing fast application</h2>
-    <img src="https://i.imgur.com/dHLmxfO.jpg?2" />
-    <em style="textAlign: center;">Look at how happy this native cat is</em>
-`;
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload, \n' + 'Cmd+D or shake for dev menu',
+  android:
+    'Double tap R on your keyboard to reload, \n' +
+    'Shake or press menu button for dev menu',
+});
 
-export default class App extends Component {
+type Props = {};
+export default class App extends Component<Props> {
   render() {
     return (
-      <ScrollView style={{flex: 1}}>
-        <HTML
-          html={htmlContent}
-          imagesMaxWidth={Dimensions.get('window').width}
-        />
-      </ScrollView>
-    );
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Welcome to React Native!</Text>
+        <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <Text style={styles.instructions}> Double tap R on your keyboard to reload, </Text>
+        <Text style={styles.instructions}> Shake or press menu button for dev menu </Text>
+      </View>
+    )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    color: '#333333',
+    marginBottom: 5
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});
